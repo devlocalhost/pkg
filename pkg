@@ -50,9 +50,8 @@ main() {
         ;;
 
     clean)
-        echo " - Cleaning cache..."
-        xbps-remove -O && echo " - Removing orphans..."
-        xbps-remove -o
+        echo "pkg: Cleaning cache..." && as_root xbps-remove -O
+        echo "pkg: Removing orphans..." && as_root xbps-remove -o
         exit 0
         ;;
 

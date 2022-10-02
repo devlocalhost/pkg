@@ -1,0 +1,82 @@
+#!/usr/bin/env sh
+
+set -e
+
+export __BASH_RUNAS="${__BASH_RUNAS:-sudo}"
+
+usage() {
+    cat <<EOF
+ pkg - A wrapper to merge basic xbps commands into one
+     - in PKG1 PKG2 ... -> Install package (s)
+     - rm PKG1 PKG2 ... -> Uninstall package (s)
+     - srch PKG         -> Search for a package
+     - clean            -> Clean up system
+     - updt             -> Update system
+     - show PKG         -> Info about a package
+     - h                -> This
+EOF
+}
+
+as_root() {
+    if ! command -v "$__BASH_RUNAS" >/dev/null; then
+        cat >&2 <<EOF
+pkg: suid tool \`${__BASH_RUNAS}\` (as in \$__BASH_RUNAS) is not installed
+     please configure it using the __BASH_RUNAS environment variable
+     or install \`${__BASH_RUNAS}\`
+EOF
+    fi
+
+    "${__BASH_RUNAS}" "$@"
+}
+
+main() {
+    case "$1" in
+    in)
+        shift
+        as_root xbps-install "$@"
+        exit 0
+        ;;
+
+    rm)
+        shift
+        as_root xbps-remove -R "$@"
+        exit 0
+        ;;
+
+    srch)
+        shift
+        xbps-query -Rs "$@"
+        exit 0
+        ;;
+
+    clean)
+        echo " - Cleaning cache..."
+        xbps-remove -O && echo " - Removing orphans..."
+        xbps-remove -o
+        exit 0
+        ;;
+
+    updt)
+        as_root xbps-install -Su
+        exit 0
+        ;;
+
+    show)
+        shift
+        xbps-query -R "$@"
+        exit 0
+        ;;
+
+    h)
+        usage
+        exit 0
+        ;;
+
+    *)
+        usage
+        exit 1
+        ;;
+    esac
+}
+
+main "$@"

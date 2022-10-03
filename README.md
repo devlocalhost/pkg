@@ -1,5 +1,5 @@
 # pkg
-pkg - A wrapper to merge xbps commands into one, made with the help of [ari](https://ari-web.xyz/gh)
+pkg - A wrapper to merge basic (like installing, removing, searching etc) xbps commands into one, made with the help of [ari](https://ari-web.xyz/gh)
 
 # what can it do
 + Install package (s)

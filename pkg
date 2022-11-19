@@ -45,7 +45,7 @@ main() {
 
     srch)
         shift
-        xbps-query -Rs "$@" | less
+        xbps-query -Rs "$@"
         exit 0
         ;;
 
@@ -62,7 +62,7 @@ main() {
 
     show)
         shift
-        xbps-query -R "$@" | less
+        xbps-query -R "$@"
         exit 0
         ;;
 

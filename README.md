@@ -21,15 +21,7 @@ pkg - A wrapper to merge basic (like installing, removing, searching etc) xbps c
 ```
 git clone https://github.com/devlocalhost/pkg && cd pkg && sudo ln -s $PWD/pkg /usr/local/bin
 
-``` 
-for python edition or
-
 ```
-clang pkg.c -o pkg && sudo ln -s $PWD/pkg /usr/local/bin
-
-``` 
-for c edition
-
 tip: git cloning inside a git/ folder is advisable for organization purposes
 
 

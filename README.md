@@ -1,5 +1,5 @@
 # pkg
-pkg - A wrapper to merge basic (like installing, removing, searching etc) xbps commands into one, made with the help of [ari](https://ari-web.xyz/gh), in C (by chatgpt) and bash
+pkg - A wrapper to merge basic (like installing, removing, searching etc) xbps commands into one, made with the help of [ari](https://ari-web.xyz/gh)
 
 
 - [What can it do](#what-can-it-do)
